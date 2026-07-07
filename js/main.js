@@ -1,3 +1,14 @@
+// === PRELOADER LOGIC ===
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    setTimeout(() => {
+      preloader.style.opacity = '0';
+      preloader.style.visibility = 'hidden';
+    }, 1500); // 1.5s delay to show off the animation
+  }
+});
+
 // === KONFIGURASI PENDAFTARAN (BISA DIATUR ON/OFF OLEH ADMIN) ===
 // Atur true untuk mengaktifkan tombol pendaftaran, atau false untuk mematikannya (abu-abu/disabled).
 const registrationConfig = {
@@ -24,9 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (config.earlyBird) {
         btnEb.removeAttribute('disabled');
         btnEb.removeAttribute('data-tooltip');
+        btnEb.textContent = btnEb.textContent.replace('🔒 ', '');
       } else {
         btnEb.setAttribute('disabled', 'true');
         btnEb.setAttribute('data-tooltip', registrationConfig.tooltipEarlyBird);
+        if (!btnEb.textContent.includes('🔒')) {
+          btnEb.textContent = '🔒 ' + btnEb.textContent.trim();
+        }
       }
     }
     
@@ -34,9 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (config.reguler) {
         btnReg.removeAttribute('disabled');
         btnReg.removeAttribute('data-tooltip');
+        btnReg.textContent = btnReg.textContent.replace('🔒 ', '');
       } else {
         btnReg.setAttribute('disabled', 'true');
         btnReg.setAttribute('data-tooltip', registrationConfig.tooltipReguler);
+        if (!btnReg.textContent.includes('🔒')) {
+          btnReg.textContent = '🔒 ' + btnReg.textContent.trim();
+        }
       }
     }
   });
@@ -207,5 +226,35 @@ cards.forEach(card => {
   card.addEventListener('mouseleave', () => {
     card.style.transition = 'var(--transition)'; // Restore original transition
     card.style.transform = `perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)`;
+  });
+});
+
+// === FAQ ACCORDION LOGIC ===
+document.addEventListener('DOMContentLoaded', () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    
+    if (question && answer) {
+      question.addEventListener('click', () => {
+        // Close other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active');
+        if (item.classList.contains('active')) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          answer.style.maxHeight = null;
+        }
+      });
+    }
   });
 });
