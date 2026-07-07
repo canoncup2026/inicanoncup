@@ -1,3 +1,98 @@
+// === KONFIGURASI PENDAFTARAN (BISA DIATUR ON/OFF OLEH ADMIN) ===
+// Atur true untuk mengaktifkan tombol pendaftaran, atau false untuk mematikannya (abu-abu/disabled).
+const registrationConfig = {
+  tooltipEarlyBird: "Pendaftaran Early Bird Belum Dibuka",
+  tooltipReguler: "Pendaftaran Reguler Belum Dibuka",
+  internal: { earlyBird: false, reguler: false },
+  instansi: { earlyBird: false, reguler: false },
+  umum:     { earlyBird: false, reguler: false }
+};
+
+// === LOGIKA TOMBOL PENDAFTARAN ===
+document.addEventListener('DOMContentLoaded', () => {
+  const cardActions = document.querySelectorAll('.card-actions');
+  
+  cardActions.forEach(actionDiv => {
+    const category = actionDiv.getAttribute('data-category');
+    if (!category || !registrationConfig[category]) return;
+    
+    const config = registrationConfig[category];
+    const btnEb = actionDiv.querySelector('.btn-reg-eb');
+    const btnReg = actionDiv.querySelector('.btn-reg-reguler');
+    
+    if (btnEb) {
+      if (config.earlyBird) {
+        btnEb.removeAttribute('disabled');
+        btnEb.removeAttribute('data-tooltip');
+      } else {
+        btnEb.setAttribute('disabled', 'true');
+        btnEb.setAttribute('data-tooltip', registrationConfig.tooltipEarlyBird);
+      }
+    }
+    
+    if (btnReg) {
+      if (config.reguler) {
+        btnReg.removeAttribute('disabled');
+        btnReg.removeAttribute('data-tooltip');
+      } else {
+        btnReg.setAttribute('disabled', 'true');
+        btnReg.setAttribute('data-tooltip', registrationConfig.tooltipReguler);
+      }
+    }
+  });
+});
+
+// === LOGIKA COUNTDOWN ===
+document.addEventListener('DOMContentLoaded', () => {
+  const cdDays = document.getElementById('cd-days');
+  const cdHours = document.getElementById('cd-hours');
+  const cdMinutes = document.getElementById('cd-minutes');
+  const cdSeconds = document.getElementById('cd-seconds');
+  const cdLabel = document.getElementById('countdown-label');
+  
+  if (!cdDays) return;
+
+  // Tanggal Milestones
+  const earlyBirdOpen = new Date('2026-07-13T00:00:00+07:00').getTime();
+  const earlyBirdClose = new Date('2026-07-17T23:59:59+07:00').getTime();
+  const regulerClose = new Date('2026-08-14T23:59:59+07:00').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    let targetDate = 0;
+    
+    if (now < earlyBirdOpen) {
+      targetDate = earlyBirdOpen;
+      cdLabel.textContent = "Menuju Early Bird";
+    } else if (now < earlyBirdClose) {
+      targetDate = earlyBirdClose;
+      cdLabel.textContent = "Sisa Waktu Early Bird";
+    } else if (now < regulerClose) {
+      targetDate = regulerClose;
+      cdLabel.textContent = "Sisa Waktu Reguler";
+    } else {
+      targetDate = now; // 0 hitung mundur
+      cdLabel.textContent = "Pendaftaran Ditutup";
+    }
+    
+    let distance = targetDate - now;
+    if (distance < 0) distance = 0;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    cdDays.textContent = days.toString().padStart(2, '0');
+    cdHours.textContent = hours.toString().padStart(2, '0');
+    cdMinutes.textContent = minutes.toString().padStart(2, '0');
+    cdSeconds.textContent = seconds.toString().padStart(2, '0');
+  }
+
+  updateCountdown(); // Panggil sekali di awal agar tidak menunggu 1 detik
+  setInterval(updateCountdown, 1000);
+});
+
 // === NAVBAR SCROLL EFFECT ===
 const navbar = document.getElementById('navbar');
 

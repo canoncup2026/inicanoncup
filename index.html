@@ -55,10 +55,38 @@
   <!-- HERO SECTION -->
   <section id="hero" class="hero">
     <div class="hero-content scroll-reveal">
-      <h1 class="hero-title">CANON CUP <br> 2026</h1>
+      <h1 class="hero-title">CANON CUP 2026</h1>
       <p class="hero-tagline">"Smash the Limit, Conquer the Summit"</p>
       <p class="hero-desc">Turnamen bulu tangkis terbesar oleh Community of PKN STAN Badminton. Hadir dengan semangat sportivitas untuk internal PKN STAN, Perguruan Tinggi Lainnya, dan Instansi Kementerian Keuangan.</p>
-      <a href="#kompetisi" class="btn-primary">Daftar Sekarang</a>
+      
+      <!-- TIMELINE & COUNTDOWN -->
+      <div class="hero-countdown-wrapper">
+        <div class="hero-timeline">
+          <div class="timeline-step">
+            <span class="step-date">13 - 17 Jul</span>
+            <span class="step-name">Early Bird</span>
+          </div>
+          <div class="timeline-step">
+            <span class="step-date">18 Jul - 14 Ags</span>
+            <span class="step-name">Reguler</span>
+          </div>
+          <div class="timeline-step">
+            <span class="step-date">15 Agustus</span>
+            <span class="step-name">Close Reg.</span>
+          </div>
+        </div>
+        <div class="hero-countdown">
+          <p id="countdown-label" class="countdown-label">Menuju Pendaftaran</p>
+          <div class="countdown-timer">
+            <div class="time-box"><span id="cd-days">00</span><small>HARI</small></div><span class="time-sep">:</span>
+            <div class="time-box"><span id="cd-hours">00</span><small>JAM</small></div><span class="time-sep">:</span>
+            <div class="time-box"><span id="cd-minutes">00</span><small>MNT</small></div><span class="time-sep">:</span>
+            <div class="time-box"><span id="cd-seconds">00</span><small>DTK</small></div>
+          </div>
+        </div>
+      </div>
+      
+      <a href="#kompetisi" class="btn-primary">Lihat Kategori Kompetisi</a>
     </div>
   </section>
 
@@ -77,27 +105,13 @@
             <!-- TODO: ganti deskripsi -->
             Ajang bergengsi untuk mahasiswa aktif PKN STAN membuktikan kemampuan terbaik mereka di lapangan.
           </p>
-          <div class="card-actions">
-            <a href="#" class="btn-primary btn-small">Daftar</a>
+          <div class="card-actions" data-category="internal">
+            <button class="btn-primary btn-small btn-reg-eb" disabled>Early Bird</button>
+            <button class="btn-primary btn-small btn-reg-reguler" disabled>Reguler</button>
             <a href="#" class="btn-outline btn-small">Handbook</a>
           </div>
         </div>
-        <!-- Card 2: Perguruan Tinggi Lainnya -->
-        <div class="card">
-          <div class="card-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-          </div>
-          <h3 class="card-title">Perguruan Tinggi Lainnya</h3>
-          <p class="card-desc">
-            <!-- TODO: ganti deskripsi -->
-            Undangan khusus bagi atlet mahasiswa dari berbagai universitas untuk bersaing memperebutkan gelar juara.
-          </p>
-          <div class="card-actions">
-            <a href="#" class="btn-primary btn-small">Daftar</a>
-            <a href="#" class="btn-outline btn-small">Handbook</a>
-          </div>
-        </div>
-        <!-- Card 3: Instansi Kemenkeu -->
+        <!-- Card 2: Instansi Kemenkeu -->
         <div class="card">
           <div class="card-icon">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
@@ -107,8 +121,25 @@
             <!-- TODO: ganti deskripsi -->
             Wadah silaturahmi sekaligus kompetisi sportif antar instansi di lingkungan Kementerian Keuangan.
           </p>
-          <div class="card-actions">
-            <a href="#" class="btn-primary btn-small">Daftar</a>
+          <div class="card-actions" data-category="instansi">
+            <button class="btn-primary btn-small btn-reg-eb" disabled>Early Bird</button>
+            <button class="btn-primary btn-small btn-reg-reguler" disabled>Reguler</button>
+            <a href="#" class="btn-outline btn-small">Handbook</a>
+          </div>
+        </div>
+        <!-- Card 3: Perguruan Tinggi Lainnya -->
+        <div class="card">
+          <div class="card-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+          </div>
+          <h3 class="card-title">Perguruan Tinggi Lainnya</h3>
+          <p class="card-desc">
+            <!-- TODO: ganti deskripsi -->
+            Undangan khusus bagi atlet mahasiswa dari berbagai universitas untuk bersaing memperebutkan gelar juara.
+          </p>
+          <div class="card-actions" data-category="umum">
+            <button class="btn-primary btn-small btn-reg-eb" disabled>Early Bird</button>
+            <button class="btn-primary btn-small btn-reg-reguler" disabled>Reguler</button>
             <a href="#" class="btn-outline btn-small">Handbook</a>
           </div>
         </div>
