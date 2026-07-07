@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let activeIndex = Math.round(track.scrollLeft / track.clientWidth);
       activeIndex = (activeIndex + 1) % dots.length;
       track.scrollTo({ left: track.clientWidth * activeIndex, behavior: 'smooth' });
-    }, 5000);
+    }, 4000);
   };
   
   const stopAutoSlide = () => {
