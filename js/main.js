@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // === DYNAMIC 3D TILT EFFECT ON CARDS ===
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll('.card, .hero-countdown-wrapper');
 
 cards.forEach(card => {
   card.addEventListener('mouseenter', () => {

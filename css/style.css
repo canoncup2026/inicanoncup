@@ -287,12 +287,15 @@ h1, h2, h3, h4, .hero-title, .section-title {
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1.5rem;
-  max-width: 600px;
+  max-width: 500px;
+  transform-style: preserve-3d;
+  transition: var(--transition);
 }
 
 .hero-timeline {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 4rem;
   margin-bottom: 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 1rem;
@@ -302,7 +305,6 @@ h1, h2, h3, h4, .hero-title, .section-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
 }
 
 .timeline-step .step-date {
@@ -832,71 +834,117 @@ button.btn-primary:disabled:hover::after {
   transform: translateY(-2px);
 }
 
-/* === GALLERY ACCORDION SECTION === */
-.gallery-accordion {
-  display: flex;
-  gap: 1rem;
-  height: 500px;
-  width: 100%;
-}
-
-.gallery-item {
+/* === CAROUSEL SECTION === */
+.carousel-container {
   position: relative;
-  flex: 1;
-  border-radius: 20px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  cursor: pointer;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
-.gallery-item::after {
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  height: 500px;
+  scroll-snap-align: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-slide::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 35%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  bottom: 0; left: 0; right: 0; top: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 40%);
 }
 
-.gallery-item:hover {
-  flex: 5;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
-
-.gallery-item:hover::after {
-  opacity: 1;
-}
-
-.gallery-caption {
+.carousel-caption {
   position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  width: max-content;
-  max-width: 90%;
+  bottom: 3rem;
+  left: 2rem;
+  right: 2rem;
   color: white;
   z-index: 2;
-  opacity: 0;
-  transform: translate(-50%, 40px); /* Sink further down on exit */
-  transition: opacity 0.1s ease, transform 0.1s ease; /* Fast exit without delay */
-  pointer-events: none;
   text-align: center;
 }
 
-.gallery-item:hover .gallery-caption {
-  opacity: 1;
-  transform: translate(-50%, 0);
-  transition: opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s; /* Delay on entry so card expands first */
-}
-
-.gallery-caption h3 {
+.carousel-caption h3 {
   font-family: var(--font-heading);
   font-size: 2.2rem;
   margin: 0;
   letter-spacing: 1px;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 5;
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.prev-btn {
+  left: 1rem;
+}
+
+.next-btn {
+  right: 1rem;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 5;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.carousel-dot.active {
+  background-color: var(--color-highlight);
+  transform: scale(1.2);
 }
 /* === SPONSOR SECTION === */
 .sponsor-grid {

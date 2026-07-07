@@ -17,6 +17,8 @@ const carouselPhotos = [
   { url: "https://placehold.co/800x600/261cc1/ffffff?text=Dokumentasi+2025+-+Foto+2", caption: "Penyerahan Medali" },
   { url: "https://placehold.co/800x600/d66c37/ffffff?text=Dokumentasi+2025+-+Foto+3", caption: "Pertandingan Internal PKN STAN" },
   { url: "https://placehold.co/800x600/1b0576/f1ff5e?text=Dokumentasi+2025+-+Foto+4", caption: "Kategori Instansi Kemenkeu" },
+  { url: "https://placehold.co/800x600/261cc1/ffffff?text=Dokumentasi+2025+-+Foto+5", caption: "Keseruan Penonton" },
+  { url: "https://placehold.co/800x600/d66c37/ffffff?text=Dokumentasi+2025+-+Foto+6", caption: "Tim Panitia Canon Cup 2025" },
 ];
 
 // Data Sponsor
