@@ -1064,4 +1064,44 @@ button.btn-primary:disabled:hover::after {
   .timeline-step .step-name {
     font-size: 0.75rem;
   }
+
+  /* Carousel Responsiveness */
+  .carousel-slide {
+    height: 250px; /* Keep landscape orientation */
+  }
+  .carousel-caption {
+    bottom: 2rem;
+    left: 1rem;
+    right: 1rem;
+  }
+  .carousel-caption h3 {
+    font-size: 1.5rem;
+  }
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  /* Calendar Responsiveness */
+  .calendar-wrapper {
+    grid-template-columns: 1fr;
+    zoom: 1;
+  }
+  .calendar-cell {
+    aspect-ratio: auto;
+    min-height: 60px;
+    padding: 0.25rem;
+  }
+  .calendar-cell .day-number {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+  }
+  .event-badge-small {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.2rem;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.1;
+  }
 }
