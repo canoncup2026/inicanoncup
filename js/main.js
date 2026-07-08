@@ -258,3 +258,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// === SCROLL-BASED BACKGROUND BLUR ===
+(function() {
+  const body = document.body;
+  if (!body.classList.contains('home-page')) return;
+
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const MAX_BLUR = 6; // px
+
+  window.addEventListener('scroll', () => {
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    const scrollY = window.scrollY;
+
+    if (scrollY <= hero.offsetTop) {
+      // Still at the very top — no blur
+      body.style.setProperty('--bg-blur', '0px');
+    } else if (scrollY >= heroBottom) {
+      // Fully past the hero — max blur
+      body.style.setProperty('--bg-blur', MAX_BLUR + 'px');
+    } else {
+      // Transitioning through the hero — proportional blur
+      const progress = (scrollY - hero.offsetTop) / hero.offsetHeight;
+      const blur = Math.min(progress * MAX_BLUR, MAX_BLUR);
+      body.style.setProperty('--bg-blur', blur.toFixed(2) + 'px');
+    }
+  });
+})();
