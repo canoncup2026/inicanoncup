@@ -12,7 +12,7 @@
   --text-light: #ffffff;
   --text-muted: #e0e0e0;
   
-  --bg-light: #f8f9fa;
+  --bg-light: #ffffff;
   --bg-white: #ffffff;
   
   --transition: all 0.3s ease;
@@ -77,7 +77,7 @@ h1, h2, h3, h4, .hero-title, .section-title {
   font-size: 3rem;
   margin-top: 2rem;
   color: var(--color-primary);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   position: relative;
 }
 
@@ -141,13 +141,32 @@ h1, h2, h3, h4, .hero-title, .section-title {
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  position: relative;
+  padding-bottom: 0.2rem;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-highlight);
+  transition: width 0.3s ease;
+  border-radius: 2px;
 }
 
 .nav-link:hover {
   color: var(--color-highlight);
 }
 
-.btn-cta, .btn-primary {
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -160,10 +179,47 @@ h1, h2, h3, h4, .hero-title, .section-title {
   border: 2px solid var(--color-accent);
 }
 
-.btn-cta:hover, .btn-primary:hover {
+.btn-primary:hover {
   background-color: transparent;
   color: var(--color-accent);
   transform: translateY(-2px);
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent);
+  color: var(--text-light);
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; right: 0; bottom: 0;
+  width: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-cta:hover::before {
+  left: 100%;
+}
+
+.btn-cta:hover {
+  background: transparent;
+  border-color: var(--color-highlight);
+  color: var(--color-highlight);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  transform: translateY(-3px);
 }
 
 /* Dropdown */
@@ -243,7 +299,6 @@ h1, h2, h3, h4, .hero-title, .section-title {
 .hero-title {
   font-size: 6rem;
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
   line-height: 1;
 }
 
@@ -251,15 +306,15 @@ h1, h2, h3, h4, .hero-title, .section-title {
   font-size: 1.7rem;
   font-style: italic;
   color: var(--color-highlight);
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
 .hero-desc {
   font-size: 1.1rem;
-  line-height: 1.4rem;
-  margin-bottom: 1.8rem;
+  line-height: 1.2rem;
+  margin-bottom: 1.2rem;
   color: var(--text-muted);
 }
 
@@ -312,14 +367,14 @@ h1, h2, h3, h4, .hero-title, .section-title {
 }
 
 .timeline-step .step-date {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--color-highlight);
   font-weight: 600;
   margin-bottom: 0.2rem;
 }
 
 .timeline-step .step-name {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -330,7 +385,7 @@ h1, h2, h3, h4, .hero-title, .section-title {
 }
 
 .countdown-label {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -1076,6 +1131,7 @@ button.btn-primary:disabled:hover::after {
 .hero-faq {
   padding: 10rem 0 4rem 0;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  position: relative;
 }
 
 .hero-faq .hero-title {
@@ -1101,14 +1157,14 @@ button.btn-primary:disabled:hover::after {
 .faq-item {
   background: var(--bg-white);
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   border-left: 4px solid var(--color-secondary);
   transition: var(--transition);
 }
 
 .faq-item:hover {
-  box-shadow: 0 8px 25px rgba(38, 28, 193, 0.15);
+  box-shadow: 0 12px 30px rgba(38, 28, 193, 0.25);
   transform: translateX(4px);
 }
 
