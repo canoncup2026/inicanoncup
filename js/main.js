@@ -3,9 +3,13 @@ window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
   if (preloader) {
     setTimeout(() => {
-      preloader.style.opacity = '0';
-      preloader.style.visibility = 'hidden';
-    }, 1500); // 1.5s delay to show off the animation
+      preloader.classList.add('loaded'); // Memicu animasi split screen dan smash
+      
+      // Hapus dari DOM setelah animasi CSS selesai berjalan (0.8s)
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 800); 
+    }, 1200); // Beri waktu user melihat teks loading berkedip
   }
 });
 

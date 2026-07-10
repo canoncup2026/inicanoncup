@@ -1117,21 +1117,65 @@ button.btn-primary:disabled:hover::after {
 }
 
 /* === PRELOADER === */
-#preloader {
+.preloader {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: var(--color-primary);
   z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  pointer-events: none;
+}
+
+.preloader-panel {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(27, 5, 118, 0.85); /* var(--color-primary) semi-transparent */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 1;
+}
+
+.preloader-panel.left-panel {
+  left: 0;
+  transform-origin: left;
+}
+
+.preloader-panel.right-panel {
+  right: 0;
+  transform-origin: right;
+}
+
+.preloader.loaded .left-panel {
+  transform: translateX(-100%);
+}
+
+.preloader.loaded .right-panel {
+  transform: translateX(100%);
+}
+
+.preloader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.preloader.loaded .preloader-content {
+  opacity: 0;
+  transform: scale(2) translateY(-20px); /* The 'Smash' effect */
 }
 
 .bouncing-shuttlecock {
   width: 80px;
   height: 80px;
-  animation: bounce 1s infinite alternate cubic-bezier(0.5, 0.05, 1, 0.5);
+  animation: bounce 0.8s infinite alternate cubic-bezier(0.5, 0.05, 1, 0.5);
 }
 
 .bouncing-shuttlecock img {
@@ -1140,9 +1184,22 @@ button.btn-primary:disabled:hover::after {
   object-fit: contain;
 }
 
+.loading-text {
+  color: var(--color-highlight);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  animation: pulseText 1.5s infinite ease-in-out;
+}
+
 @keyframes bounce {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-50px); }
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-30px) rotate(15deg); }
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 /* === FAQ SECTION === */
