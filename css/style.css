@@ -341,7 +341,7 @@ body.home-page .tentative-label {
   font-size: 6rem;
   margin-top: 1.5rem;
   line-height: 1;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
 .hero-tagline {
