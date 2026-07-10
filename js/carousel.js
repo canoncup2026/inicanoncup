@@ -16,11 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     slide.className = 'carousel-slide';
     slide.style.backgroundImage = `url('${photo.url}')`;
     
-    const caption = document.createElement('div');
-    caption.className = 'carousel-caption';
-    caption.innerHTML = `<h3>${photo.caption}</h3>`;
-    
-    slide.appendChild(caption);
     track.appendChild(slide);
 
     // Dot

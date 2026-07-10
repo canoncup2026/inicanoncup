@@ -970,30 +970,6 @@ button.btn-primary:disabled:hover::after {
   background-position: center;
 }
 
-.carousel-slide::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0; top: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 40%);
-}
-
-.carousel-caption {
-  position: absolute;
-  bottom: 3rem;
-  left: 2rem;
-  right: 2rem;
-  color: white;
-  z-index: 2;
-  text-align: center;
-}
-
-.carousel-caption h3 {
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
-  margin: 0;
-  letter-spacing: 1px;
-}
-
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -1428,5 +1404,211 @@ button.btn-primary:disabled:hover::after {
     white-space: normal;
     word-break: break-word;
     line-height: 1.1;
+  }
+}
+
+/* === MATCH SCHEDULE PAGE === */
+body.schedule-page {
+  background-color: var(--color-primary);
+  color: var(--text-light);
+}
+
+.hero-schedule {
+  padding: 120px 0 1rem 0;
+  text-align: center;
+}
+
+.hero-schedule .hero-title {
+  font-size: 4.5rem;
+  color: var(--color-highlight);
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.hero-schedule .hero-subtitle {
+  font-size: 2rem;
+  font-family: var(--font-heading);
+  background: var(--text-light);
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-schedule .hero-subtitle:hover {
+  background: var(--color-highlight);
+}
+
+.subtitle-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.subtitle-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--bg-white);
+  min-width: 150px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.subtitle-dropdown:hover .subtitle-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(5px);
+}
+
+.subtitle-dropdown-menu li a {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  color: var(--text-dark);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.subtitle-dropdown-menu li a:hover {
+  background: var(--color-highlight);
+  color: var(--color-primary);
+}
+
+.schedule-page .section {
+  padding-top: 1rem;
+}
+
+.court-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--text-light);
+  color: var(--text-light);
+  padding: 0.8rem 2rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tab-btn.active {
+  background: var(--color-highlight);
+  color: var(--color-primary);
+  border-color: var(--color-highlight);
+  box-shadow: 0 4px 15px rgba(241, 255, 94, 0.3);
+}
+
+.match-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.match-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.match-team {
+  background: var(--color-primary);
+  border: 3px solid var(--text-light);
+  color: var(--text-light);
+  padding: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  width: 200px;
+  text-align: center;
+  z-index: 2;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.match-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 300px;
+  margin: 0 -5px; /* Overlap with team boxes to connect them */
+  z-index: 1;
+}
+
+.match-date, .match-time {
+  background: var(--color-highlight);
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.3rem 1rem;
+  text-align: center;
+  width: 80%;
+  white-space: nowrap;
+}
+
+.match-vs-wrapper {
+  background: var(--text-light);
+  width: 100%;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.match-vs {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--text-light);
+  -webkit-text-stroke: 1.5px var(--color-primary);
+  line-height: 1;
+}
+
+.match-score {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .match-team {
+    font-size: 1.2rem;
+    width: 120px;
+    padding: 0.8rem 0.5rem;
+  }
+  .match-vs {
+    font-size: 1.8rem;
+  }
+  .match-score {
+    font-size: 1.8rem;
+  }
+  .match-date, .match-time {
+    font-size: 0.7rem;
+    width: 90%;
   }
 }
