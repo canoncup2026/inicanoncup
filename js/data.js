@@ -43,7 +43,7 @@ const contactData = {
 const matchSchedules = {
   "1": {
     title: "Day 1",
-    date: "Sabtu, 14 Mei 2026",
+    date: "Jumat, 28 Agustus 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
@@ -70,7 +70,7 @@ const matchSchedules = {
   },
   "2": {
     title: "Day 2",
-    date: "Minggu, 15 Mei 2026",
+    date: "Sabtu, 29 Agustus 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
@@ -97,7 +97,7 @@ const matchSchedules = {
   },
   "3": {
     title: "Day 3",
-    date: "Sabtu, 21 Mei 2026",
+    date: "Minggu, 30 Agustus 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
@@ -124,7 +124,7 @@ const matchSchedules = {
   },
   "4": {
     title: "Day 4",
-    date: "Minggu, 22 Mei 2026",
+    date: "Jumat, 4 September 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
@@ -151,7 +151,7 @@ const matchSchedules = {
   },
   "5": {
     title: "Day 5",
-    date: "Sabtu, 28 Mei 2026",
+    date: "Sabtu, 5 September 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
@@ -178,7 +178,7 @@ const matchSchedules = {
   },
   "6": {
     title: "Day 6",
-    date: "Minggu, 29 Mei 2026",
+    date: "Minggu, 6 September 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
