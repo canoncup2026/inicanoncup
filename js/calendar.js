@@ -21,15 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
   function formatShortDate(dateStr, endStr) {
+    const getShortMonth = (d) => monthNames[d.getMonth()] === 'Agustus' ? 'Agt' : monthNames[d.getMonth()].substring(0,3);
+
     if (dateStr && endStr) {
       const d1 = new Date(dateStr);
       const d2 = new Date(endStr);
-      return `${d1.getDate()} ${monthNames[d1.getMonth()].substring(0,3)} - ${d2.getDate()} ${monthNames[d2.getMonth()].substring(0,3)}`;
+      return `${d1.getDate()} ${getShortMonth(d1)} - ${d2.getDate()} ${getShortMonth(d2)}`;
     }
     const d = new Date(dateStr);
-    const day = d.getDate();
-    const month = monthNames[d.getMonth()].substring(0, 3);
-    return `${day} ${month}`;
+    return `${d.getDate()} ${getShortMonth(d)}`;
   }
 
   function getCategory(title) {
@@ -46,12 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const category = getCategory(e.title);
     
+    item.style.borderLeftColor = e.color || 'var(--color-primary)';
+    
     item.innerHTML = `
       <div class="agenda-date">${formatShortDate(e.date || e.startDate, e.endDate)}</div>
       <div class="agenda-info">
-        <div class="agenda-info-title">${e.title}</div>
+        <div class="agenda-info-title" style="border-bottom: 6px solid ${e.color || 'var(--color-primary)'}; display: inline-block; padding-bottom: 4px;">${e.title}</div>
       </div>
-      <div class="agenda-badge" ${e.color ? `style="background-color:${e.color}; color:${e.textColor || '#fff'}"` : ''}>${category}</div>
     `;
     container.appendChild(item);
   }
@@ -143,6 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (dayEvents.length > 0) {
         cell.classList.add('active-day');
         
+        // Match cell border with the first event's color
+        const firstColor = dayEvents[0].color || 'var(--color-primary)';
+        cell.style.borderColor = firstColor;
+        cell.style.boxShadow = `0 0 0 1px ${firstColor}`;
+
         // Add click listener
         cell.addEventListener('click', () => {
           openModal(dateStr, dayEvents);
@@ -151,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dayEvents.forEach(e => {
           const badge = document.createElement('div');
           badge.className = 'event-badge-small';
-          badge.textContent = e.title;
+          badge.textContent = "";
           badge.title = e.title; // tooltip built-in
           if (e.color) {
             badge.style.backgroundColor = e.color;

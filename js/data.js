@@ -47,17 +47,17 @@ const matchSchedules = {
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
-        { time: "09:00 - 09:20 WIB", team1: "Let 21 B", team2: "Let 27 B", score: "" },
-        { time: "09:20 - 09:40 WIB", team1: "Let 22", team2: "Let 20", score: "" },
-        { time: "09:40 - 10:00 WIB", team1: "Let 17", team2: "Let 13", score: "" },
-        { time: "10:00 - 10:20 WIB", team1: "Let 21 B", team2: "Let 22", score: "" },
-        { time: "10:20 - 10:40 WIB", team1: "Let 27 B", team2: "Let 20", score: "" },
-        { time: "10:40 - 11:00 WIB", team1: "Let 21 A", team2: "Let 27 A", score: "" },
+        { time: "09:00 - 09:20 WIB", team1: "-", team2: "-", score: "" },
+        { time: "09:20 - 09:40 WIB", team1: "-", team2: "-", score: "" },
+        { time: "09:40 - 10:00 WIB", team1: "-", team2: "-", score: "" },
+        { time: "10:00 - 10:20 WIB", team1: "-", team2: "-", score: "" },
+        { time: "10:20 - 10:40 WIB", team1: "-", team2: "-", score: "" },
+        { time: "10:40 - 11:00 WIB", team1: "-", team2: "-", score: "" },
         { time: "11:00 - 11:20 WIB", team1: "-", team2: "-", score: "" },
         { time: "11:20 - 11:40 WIB", team1: "-", team2: "-", score: "" }
       ],
       "Lapangan 2": [
-        { time: "09:00 - 09:20 WIB", team1: "Tim X", team2: "Tim Y", score: "" },
+        { time: "09:00 - 09:20 WIB", team1: "-", team2: "-", score: "" },
         { time: "09:20 - 09:40 WIB", team1: "-", team2: "-", score: "" },
         { time: "09:40 - 10:00 WIB", team1: "-", team2: "-", score: "" },
         { time: "10:00 - 10:20 WIB", team1: "-", team2: "-", score: "" },
@@ -74,7 +74,7 @@ const matchSchedules = {
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
-        { time: "09:00 - 09:20 WIB", team1: "Tim A", team2: "Tim B", score: "" },
+        { time: "09:00 - 09:20 WIB", team1: "-", team2: "-", score: "" },
         { time: "09:20 - 09:40 WIB", team1: "-", team2: "-", score: "" },
         { time: "09:40 - 10:00 WIB", team1: "-", team2: "-", score: "" },
         { time: "10:00 - 10:20 WIB", team1: "-", team2: "-", score: "" },
