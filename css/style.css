@@ -124,8 +124,24 @@ h1, h2, h3, h4, .hero-title, .section-title {
   object-fit: contain;
 }
 
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 .footer-logo .logo-img {
   height: 70px;
+}
+
+.footer-tagline {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--color-highlight);
+  line-height: 1.1;
+  letter-spacing: 1px;
+
 }
 
 .nav-menu {

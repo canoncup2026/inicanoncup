@@ -15,12 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTitle = document.getElementById('modal-title');
   const modalBody = document.getElementById('modal-body');
 
-  // Start with August 2026 as per event spec
-  let currentDate = new Date(2026, 7, 1); // August is month 7 (0-indexed)
+  // Start with July 2026
+  let currentDate = new Date(2026, 6, 1); // July is month 6 (0-indexed)
 
   const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
-  function formatShortDate(dateStr) {
+  function formatShortDate(dateStr, endStr) {
+    if (dateStr && endStr) {
+      const d1 = new Date(dateStr);
+      const d2 = new Date(endStr);
+      return `${d1.getDate()} ${monthNames[d1.getMonth()].substring(0,3)} - ${d2.getDate()} ${monthNames[d2.getMonth()].substring(0,3)}`;
+    }
     const d = new Date(dateStr);
     const day = d.getDate();
     const month = monthNames[d.getMonth()].substring(0, 3);
@@ -42,11 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const category = getCategory(e.title);
     
     item.innerHTML = `
-      <div class="agenda-date">${formatShortDate(e.date)}</div>
+      <div class="agenda-date">${formatShortDate(e.date || e.startDate, e.endDate)}</div>
       <div class="agenda-info">
         <div class="agenda-info-title">${e.title}</div>
       </div>
-      <div class="agenda-badge">${category}</div>
+      <div class="agenda-badge" ${e.color ? `style="background-color:${e.color}; color:${e.textColor || '#fff'}"` : ''}>${category}</div>
     `;
     container.appendChild(item);
   }
@@ -98,8 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filter events for current month
     const currentMonthEvents = calendarEvents.filter(e => {
-      const eDate = new Date(e.date);
-      return eDate.getFullYear() === year && eDate.getMonth() === month;
+      if (e.date) {
+        const eDate = new Date(e.date);
+        return eDate.getFullYear() === year && eDate.getMonth() === month;
+      } else if (e.startDate && e.endDate) {
+        const sDate = new Date(e.startDate);
+        const eDate = new Date(e.endDate);
+        const currStart = new Date(year, month, 1);
+        const currEnd = new Date(year, month + 1, 0);
+        return (sDate <= currEnd && eDate >= currStart);
+      }
+      return false;
     });
 
     // Empty cells
@@ -120,7 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
       cell.appendChild(dayNum);
 
       const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-      const dayEvents = currentMonthEvents.filter(e => e.date === dateStr);
+      const dayEvents = currentMonthEvents.filter(e => {
+        if (e.date) return e.date === dateStr;
+        if (e.startDate && e.endDate) return dateStr >= e.startDate && dateStr <= e.endDate;
+        return false;
+      });
 
       if (dayEvents.length > 0) {
         cell.classList.add('active-day');
@@ -135,6 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
           badge.className = 'event-badge-small';
           badge.textContent = e.title;
           badge.title = e.title; // tooltip built-in
+          if (e.color) {
+            badge.style.backgroundColor = e.color;
+            if (e.textColor) badge.style.color = e.textColor;
+          }
           cell.appendChild(badge);
         });
       }
@@ -159,7 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
       agendaList.innerHTML = '<p style="text-align:center; color:#888; margin-top:2rem;">Tidak ada agenda di bulan ini.</p>';
     } else {
       // Sort events by date
-      currentMonthEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+      currentMonthEvents.sort((a, b) => {
+        const dA = new Date(a.date || a.startDate);
+        const dB = new Date(b.date || b.startDate);
+        return dA - dB;
+      });
       
       currentMonthEvents.forEach(e => {
         renderAgendaItem(e, agendaList);

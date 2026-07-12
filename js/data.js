@@ -3,6 +3,9 @@
 
 // Data Event Kalender (Agustus - September 2026)
 const calendarEvents = [
+  { startDate: "2026-07-13", endDate: "2026-07-17", title: "Opreg Early Bird", color: "var(--color-accent)" },
+  { startDate: "2026-07-18", endDate: "2026-08-14", title: "Opreg Reguler", color: "var(--color-highlight)", textColor: "var(--color-primary)" },
+  { date: "2026-08-21", title: "Technical Meeting", color: "#e74c3c" },
   { date: "2026-08-28", title: "Day 1" },
   { date: "2026-08-29", title: "Day 2" },
   { date: "2026-08-30", title: "Day 3" },
@@ -32,8 +35,8 @@ const sponsorsData = [
 
 // Data Kontak
 const contactData = {
-  whatsapp: "(nanti diisi)",
-  whatsappLink: "https://wa.me/"
+  whatsapp: "+62 812 3249 4161 (Fira)",
+  whatsappLink: "https://wa.me/6281232494161"
 };
 
 // Data Jadwal Pertandingan (Bagan)
