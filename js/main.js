@@ -18,9 +18,9 @@ window.addEventListener('load', () => {
 const registrationConfig = {
   tooltipEarlyBird: "Pendaftaran Early Bird Belum Dibuka",
   tooltipReguler: "Pendaftaran Reguler Belum Dibuka",
-  internal: { earlyBird: true, reguler: false, earlyBirdLink: "https://canoncup2026.zite.so/beginner" },
-  instansi: { earlyBird: true, reguler: false, earlyBirdLink: "https://canoncup2026.zite.so/mahasiswa" },
-  umum:     { earlyBird: true, reguler: false, earlyBirdLink: "https://canoncup2026.zite.so/perguruan-tinggi" }
+  internal: { earlyBird: true, reguler: false, earlyBirdLink: "https://canoncup26.zite.so" },
+  instansi: { earlyBird: true, reguler: false, earlyBirdLink: "https://canoncup26.zite.so" },
+  umum:     { earlyBird: true, reguler: false, earlyBirdLink: "https://canoncup26.zite.so" }
 };
 
 // === LOGIKA TOMBOL PENDAFTARAN ===
