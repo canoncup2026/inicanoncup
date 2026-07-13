@@ -1234,6 +1234,18 @@ button.btn-primary:disabled:hover::after {
   letter-spacing: 6px;
 }
 
+.faq-category-title {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin: 3rem auto 1rem auto;
+  max-width: 800px;
+  text-align: left;
+  border-bottom: 3px solid var(--color-accent);
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
 .faq-container {
   max-width: 800px;
   margin: 0 auto;
