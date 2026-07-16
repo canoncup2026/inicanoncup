@@ -64,14 +64,33 @@ document.addEventListener('DOMContentLoaded', () => {
       if (matches && matches.length > 0) {
         matches.forEach((match) => {
           // Menentukan apakah mau menampilkan VS atau Skor
+          let team1Class = "team-left";
+          let team2Class = "team-right";
           let middleElement = `<div class="match-vs">VS</div>`;
+
           if (match.score && match.score.trim() !== "") {
             middleElement = `<div class="match-score">${match.score}</div>`;
+            
+            // Parse score (e.g. "2 - 0" or "2-1") to determine winner/loser
+            const scoreParts = match.score.split('-');
+            if (scoreParts.length === 2) {
+              const score1 = parseInt(scoreParts[0].trim());
+              const score2 = parseInt(scoreParts[1].trim());
+              if (!isNaN(score1) && !isNaN(score2)) {
+                if (score1 > score2) {
+                  team1Class += " winner";
+                  team2Class += " loser";
+                } else if (score2 > score1) {
+                  team1Class += " loser";
+                  team2Class += " winner";
+                }
+              }
+            }
           }
 
           const matchHTML = `
             <div class="match-card">
-              <div class="match-team team-left">${match.team1}</div>
+              <div class="match-team ${team1Class}">${match.team1}</div>
               <div class="match-center">
                 <div class="match-date">${dateString}</div>
                 <div class="match-vs-wrapper">
@@ -79,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="match-time">${match.time}</div>
               </div>
-              <div class="match-team team-right">${match.team2}</div>
+              <div class="match-team ${team2Class}">${match.team2}</div>
             </div>
           `;
           matchContainer.innerHTML += matchHTML;
