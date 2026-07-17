@@ -16,11 +16,11 @@ window.addEventListener('load', () => {
 // === KONFIGURASI PENDAFTARAN (BISA DIATUR ON/OFF OLEH ADMIN) ===
 // Atur true untuk mengaktifkan tombol pendaftaran, atau false untuk mematikannya (abu-abu/disabled).
 const registrationConfig = {
-  tooltipEarlyBird: "Pendaftaran Early Bird Belum Dibuka",
+  tooltipEarlyBird: "Pendaftaran Early Bird Telah Ditutup",
   tooltipReguler: "Pendaftaran Reguler Belum Dibuka",
-  internal: { earlyBird: true, reguler: false, earlyBirdLink: " https://canoncup26.zite.so/beginner" },
-  instansi: { earlyBird: true, reguler: false, earlyBirdLink: "https://canoncup26.zite.so/mahasiswa" },
-  umum:     { earlyBird: true, reguler: false, earlyBirdLink: "https://canoncup26.zite.so/perguruan-tinggi" }
+  internal: { earlyBird: false, reguler: true, earlyBirdLink: " https://canoncup26.zite.so/beginner" },
+  instansi: { earlyBird: false, reguler: true, earlyBirdLink: "https://canoncup26.zite.so/mahasiswa" },
+  umum:     { earlyBird: false, reguler: true, earlyBirdLink: "https://canoncup26.zite.so/perguruan-tinggi" }
 };
 
 // === LOGIKA TOMBOL PENDAFTARAN ===
