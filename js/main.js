@@ -18,9 +18,9 @@ window.addEventListener('load', () => {
 const registrationConfig = {
   tooltipEarlyBird: "Pendaftaran Early Bird Telah Ditutup",
   tooltipReguler: "Pendaftaran Reguler Belum Dibuka",
-  internal: { earlyBird: false, reguler: true, regulerLink: " https://canoncup26.zite.so/beginner" },
-  instansi: { earlyBird: false, reguler: true, regulerLink: "https://canoncup26.zite.so/mahasiswa" },
-  umum:     { earlyBird: false, reguler: true, regulerLink: "https://canoncup26.zite.so/perguruan-tinggi" }
+  internal: { earlyBird: false, reguler: true, earlyBirdLink: "https://canoncup26.zite.so/beginner" },
+  instansi: { earlyBird: false, reguler: true, earlyBirdLink: "https://canoncup26.zite.so/mahasiswa" },
+  umum:     { earlyBird: false, reguler: true, earlyBirdLink: "https://canoncup26.zite.so/perguruan-tinggi" }
 };
 
 // === LOGIKA TOMBOL PENDAFTARAN ===
@@ -53,9 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     if (btnReg) {
-      if (config.regulerLink) {
-        btnReg.onclick = () => window.open(config.regulerLink, '_blank');
-      }
       if (config.reguler) {
         btnReg.removeAttribute('disabled');
         btnReg.removeAttribute('data-tooltip');

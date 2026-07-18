@@ -5,13 +5,13 @@
 const calendarEvents = [
   { startDate: "2026-07-13", endDate: "2026-07-17", title: "Opreg Early Bird", color: "var(--color-accent)" },
   { startDate: "2026-07-18", endDate: "2026-08-14", title: "Opreg Reguler", color: "var(--color-highlight)", textColor: "var(--color-primary)" },
-  { date: "2026-08-21", title: "Technical Meeting", color: "#e74c3c" },
-  { date: "2026-08-28", title: "Day 1" },
-  { date: "2026-08-29", title: "Day 2" },
-  { date: "2026-08-30", title: "Day 3" },
-  { date: "2026-09-04", title: "Day 4" },
-  { date: "2026-09-05", title: "Day 5" },
-  { date: "2026-09-06", title: "Day 6" }
+  { date: "2026-08-16", title: "Technical Meeting", color: "#e74c3c" },
+  { date: "2026-08-21", title: "Day 1" },
+  { date: "2026-08-22", title: "Day 2" },
+  { date: "2026-08-23", title: "Day 3" },
+  { date: "2026-08-28", title: "Day 4" },
+  { date: "2026-08-29", title: "Day 5" },
+  { date: "2026-08-30", title: "Day 6" }
 ];
 
 // Data Dokumentasi (Carousel)
