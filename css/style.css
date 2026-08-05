@@ -775,6 +775,46 @@ button.btn-primary:disabled:hover::after {
   box-shadow: 0 0 0 1px var(--color-secondary);
 }
 
+.calendar-cell.today-cell {
+  border-color: var(--color-accent) !important;
+  background-color: rgba(214, 108, 55, 0.08);
+  box-shadow: 0 0 0 2px rgba(214, 108, 55, 0.35) !important;
+}
+
+.calendar-cell.today-cell .day-number {
+  background-color: var(--color-accent);
+  color: var(--text-light);
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.today-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.5rem, 0.7vw, 0.6rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  background-color: var(--color-accent);
+  padding: 4px 5px 1px 5px;
+  border-radius: 4px;
+  margin: auto;
+  align-self: center;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(214, 108, 55, 0.25);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
 .event-badge-small {
   background-color: var(--color-secondary);
   height: 15px;
@@ -1479,6 +1519,16 @@ button.btn-primary:disabled:hover::after {
   .calendar-cell .day-number {
     font-size: 0.8rem;
     margin-bottom: 2px;
+  }
+  .calendar-cell.today-cell .day-number {
+    width: 15px;
+    height: 15px;
+    font-size: 0.6rem;
+  }
+  .today-label {
+    font-size: 0.48rem;
+    padding: 1px 2px;
+    letter-spacing: 0.1px;
   }
 }
 

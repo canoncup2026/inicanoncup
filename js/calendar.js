@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTitle = document.getElementById('modal-title');
   const modalBody = document.getElementById('modal-body');
 
-  // Start with July 2026
-  let currentDate = new Date(2026, 6, 1); // July is month 6 (0-indexed)
+  // Start with current month/year based on today's date
+  const today = new Date();
+  let currentDate = new Date(today.getFullYear(), today.getMonth(), 1);
 
   const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
@@ -92,6 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
 
+    // Check today's date for highlighting
+    const now = new Date();
+    const isCurrentMonthYear = (now.getFullYear() === year && now.getMonth() === month);
+
     // Update Header
     monthYearDisplay.textContent = `${monthNames[month]} ${year}`;
 
@@ -128,11 +133,23 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let day = 1; day <= daysInMonth; day++) {
       const cell = document.createElement('div');
       cell.className = 'calendar-cell';
-      
+
+      const isToday = isCurrentMonthYear && (now.getDate() === day);
+      if (isToday) {
+        cell.classList.add('today-cell');
+      }
+
       const dayNum = document.createElement('div');
       dayNum.className = 'day-number';
       dayNum.textContent = day;
       cell.appendChild(dayNum);
+
+      if (isToday) {
+        const todayLabel = document.createElement('span');
+        todayLabel.className = 'today-label';
+        todayLabel.textContent = 'Today';
+        cell.appendChild(todayLabel);
+      }
 
       const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
       const dayEvents = currentMonthEvents.filter(e => {
