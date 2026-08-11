@@ -189,7 +189,7 @@ revealElements.forEach(el => {
   revealObserver.observe(el);
 });
 
-// === POPULATE DATA DUMMY ===
+// === POPULATE DATA DUMMY & 3D TILT ===
 document.addEventListener('DOMContentLoaded', () => {
   // Populate Sponsors
   const sponsorGrid = document.getElementById('sponsor-grid');
@@ -209,33 +209,37 @@ document.addEventListener('DOMContentLoaded', () => {
     footerWaLink.href = contactData.whatsappLink;
     footerWaText.textContent = contactData.whatsapp;
   }
-});
 
-// === DYNAMIC 3D TILT EFFECT ON CARDS ===
-const cards = document.querySelectorAll('.card, .hero-countdown-wrapper');
+  // Dynamic 3D Tilt Effect on Cards, Countdown & Sponsors
+  const tiltElements = document.querySelectorAll('.card, .hero-countdown-wrapper, .sponsor-item');
 
-cards.forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    card.style.transition = 'transform 0.1s ease'; // Fast transition for smooth follow
-  });
+  tiltElements.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'transform 0.1s ease'; // Fast transition for smooth follow
+    });
 
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    const rotateX = ((y - centerY) / centerY) * -7;
-    const rotateY = ((x - centerX) / centerX) * 7;
-    
-    card.style.transform = `perspective(1000px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const isSponsor = card.classList.contains('sponsor-item');
+      const tiltIntensity = isSponsor ? 12 : 7;
+      const scaleValue = isSponsor ? 1.08 : 1.05;
+      
+      const rotateX = ((y - centerY) / centerY) * -tiltIntensity;
+      const rotateY = ((x - centerX) / centerX) * tiltIntensity;
+      
+      card.style.transform = `perspective(1000px) scale(${scaleValue}) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
 
-  card.addEventListener('mouseleave', () => {
-    card.style.transition = 'var(--transition)'; // Restore original transition
-    card.style.transform = `perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)`;
+    card.addEventListener('mouseleave', () => {
+      card.style.transition = 'var(--transition)'; // Restore original transition
+      card.style.transform = `perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)`;
+    });
   });
 });
 

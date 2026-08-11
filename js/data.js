@@ -26,11 +26,7 @@ const carouselPhotos = [
 
 // Data Sponsor
 const sponsorsData = [
-  { name: "Sponsor 1", logoUrl: "https://placehold.co/200x100/eeeeee/333333?text=Sponsor+1" },
-  { name: "Sponsor 2", logoUrl: "https://placehold.co/200x100/eeeeee/333333?text=Sponsor+2" },
-  { name: "Sponsor 3", logoUrl: "https://placehold.co/200x100/eeeeee/333333?text=Sponsor+3" },
-  { name: "Sponsor 4", logoUrl: "https://placehold.co/200x100/eeeeee/333333?text=Sponsor+4" },
-  { name: "Sponsor 5", logoUrl: "https://placehold.co/200x100/eeeeee/333333?text=Sponsor+5" },
+  { name: "Wells", logoUrl: "assets/images/sponsor/wells.png" }
 ];
 
 // Data Kontak
