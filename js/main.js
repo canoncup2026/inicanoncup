@@ -142,11 +142,15 @@ const dropdowns = document.querySelectorAll('.dropdown');
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
   navMenu.classList.toggle('active');
-  // Ensure navbar gets solid background when menu opens at top
-  if(!navbar.classList.contains('scrolled') && navMenu.classList.contains('active')) {
+  // Ensure navbar gets solid background when menu opens at top on desktop
+  if (!navbar.classList.contains('scrolled') && navMenu.classList.contains('active')) {
     navbar.style.backgroundColor = 'var(--color-primary)';
   } else if (!navbar.classList.contains('scrolled') && !navMenu.classList.contains('active')) {
-    navbar.style.backgroundColor = 'transparent';
+    if (window.innerWidth > 768) {
+      navbar.style.backgroundColor = 'transparent';
+    } else {
+      navbar.style.backgroundColor = '';
+    }
   }
 });
 
