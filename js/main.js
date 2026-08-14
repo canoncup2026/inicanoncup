@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const earlyBirdOpen = new Date('2026-07-13T00:00:00+07:00').getTime();
   const earlyBirdClose = new Date('2026-07-17T23:59:59+07:00').getTime();
   const regulerClose = new Date('2026-08-14T23:59:59+07:00').getTime();
+  const extendClose = new Date('2026-08-17T23:59:59+07:00').getTime();
 
   function updateCountdown() {
     const now = new Date().getTime();
@@ -99,6 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (now < regulerClose) {
       targetDate = regulerClose;
       cdLabel.textContent = "Sisa Waktu Reguler";
+    } else if (now < extendClose) {
+      targetDate = extendClose;
+      cdLabel.textContent = "SISA WAKTU EXTEND";
     } else {
       targetDate = now; // 0 hitung mundur
       cdLabel.textContent = "Pendaftaran Ditutup";

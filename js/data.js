@@ -5,7 +5,8 @@
 const calendarEvents = [
   { startDate: "2026-07-13", endDate: "2026-07-17", title: "Opreg Early Bird", color: "var(--color-accent)" },
   { startDate: "2026-07-18", endDate: "2026-08-14", title: "Opreg Reguler", color: "var(--color-highlight)", textColor: "var(--color-primary)" },
-  { date: "2026-08-16", title: "Technical Meeting", color: "#e74c3c" },
+  { startDate: "2026-08-15", endDate: "2026-08-17", title: "Opreg Extended", color: "#e74c3c", textColor: "#ffffff" },
+  { date: "2026-08-18", title: "Technical Meeting", color: "#8e44ad" },
   { date: "2026-08-21", title: "Day 1" },
   { date: "2026-08-22", title: "Day 2" },
   { date: "2026-08-23", title: "Day 3" },
@@ -26,7 +27,8 @@ const carouselPhotos = [
 
 // Data Sponsor
 const sponsorsData = [
-  { name: "Wells", logoUrl: "assets/images/sponsor/wells.png" }
+  { name: "Wells", logoUrl: "assets/images/sponsor/wells.png" },
+  { name: "Katanya PB", logoUrl: "assets/images/sponsor/katanyapb.png" }
 ];
 
 // Data Kontak
