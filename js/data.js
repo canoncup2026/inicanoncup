@@ -6,13 +6,13 @@ const calendarEvents = [
   { startDate: "2026-07-13", endDate: "2026-07-17", title: "Opreg Early Bird", color: "var(--color-accent)" },
   { startDate: "2026-07-18", endDate: "2026-08-14", title: "Opreg Reguler", color: "var(--color-highlight)", textColor: "var(--color-primary)" },
   { startDate: "2026-08-15", endDate: "2026-08-17", title: "Opreg Extended", color: "#e74c3c", textColor: "#ffffff" },
-  { date: "2026-08-18", title: "Technical Meeting", color: "#8e44ad" },
-  { date: "2026-08-21", title: "Day 1" },
-  { date: "2026-08-22", title: "Day 2" },
-  { date: "2026-08-23", title: "Day 3" },
-  { date: "2026-08-28", title: "Day 4" },
-  { date: "2026-08-29", title: "Day 5" },
-  { date: "2026-08-30", title: "Day 6" }
+  { startDate: "2026-08-18", endDate: "2026-08-19", title: "Last Chance Extend", color: "#d63031", textColor: "#ffffff" },
+  { date: "2026-08-20", title: "Technical Meeting", color: "#8e44ad" },
+  { date: "2026-08-22", title: "Day 1" },
+  { date: "2026-08-23", title: "Day 2" },
+  { date: "2026-08-28", title: "Day 3" },
+  { date: "2026-08-29", title: "Day 4" },
+  { date: "2026-08-30", title: "Day 5" }
 ];
 
 // Data Dokumentasi (Carousel)
@@ -41,7 +41,7 @@ const contactData = {
 const matchSchedules = {
   "1": {
     title: "Day 1",
-    date: "Jumat, 28 Agustus 2026",
+    date: "Sabtu, 22 Agustus 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
@@ -68,7 +68,7 @@ const matchSchedules = {
   },
   "2": {
     title: "Day 2",
-    date: "Sabtu, 29 Agustus 2026",
+    date: "Minggu, 23 Agustus 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
@@ -95,7 +95,7 @@ const matchSchedules = {
   },
   "3": {
     title: "Day 3",
-    date: "Minggu, 30 Agustus 2026",
+    date: "Jumat, 28 Agustus 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
@@ -122,7 +122,7 @@ const matchSchedules = {
   },
   "4": {
     title: "Day 4",
-    date: "Jumat, 4 September 2026",
+    date: "Sabtu, 29 Agustus 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [
@@ -149,34 +149,7 @@ const matchSchedules = {
   },
   "5": {
     title: "Day 5",
-    date: "Sabtu, 5 September 2026",
-    session: "09:00 - 11:00",
-    courts: {
-      "Lapangan 1": [
-        { time: "09:00 - 09:20 WIB", team1: "-", team2: "-", score: "" },
-        { time: "09:20 - 09:40 WIB", team1: "-", team2: "-", score: "" },
-        { time: "09:40 - 10:00 WIB", team1: "-", team2: "-", score: "" },
-        { time: "10:00 - 10:20 WIB", team1: "-", team2: "-", score: "" },
-        { time: "10:20 - 10:40 WIB", team1: "-", team2: "-", score: "" },
-        { time: "10:40 - 11:00 WIB", team1: "-", team2: "-", score: "" },
-        { time: "11:00 - 11:20 WIB", team1: "-", team2: "-", score: "" },
-        { time: "11:20 - 11:40 WIB", team1: "-", team2: "-", score: "" }
-      ],
-      "Lapangan 2": [
-        { time: "09:00 - 09:20 WIB", team1: "-", team2: "-", score: "" },
-        { time: "09:20 - 09:40 WIB", team1: "-", team2: "-", score: "" },
-        { time: "09:40 - 10:00 WIB", team1: "-", team2: "-", score: "" },
-        { time: "10:00 - 10:20 WIB", team1: "-", team2: "-", score: "" },
-        { time: "10:20 - 10:40 WIB", team1: "-", team2: "-", score: "" },
-        { time: "10:40 - 11:00 WIB", team1: "-", team2: "-", score: "" },
-        { time: "11:00 - 11:20 WIB", team1: "-", team2: "-", score: "" },
-        { time: "11:20 - 11:40 WIB", team1: "-", team2: "-", score: "" }
-      ]
-    }
-  },
-  "6": {
-    title: "Day 6",
-    date: "Minggu, 6 September 2026",
+    date: "Minggu, 30 Agustus 2026",
     session: "09:00 - 11:00",
     courts: {
       "Lapangan 1": [

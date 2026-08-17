@@ -404,7 +404,7 @@ body.home-page .tentative-label {
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1.5rem;
-  max-width: 540px;
+  max-width: 600px;
   transform-style: preserve-3d;
   transition: var(--transition);
 }
@@ -412,7 +412,7 @@ body.home-page .tentative-label {
 .hero-timeline {
   display: flex;
   justify-content: center;
-  gap: clamp(1rem, 4vw, 2.5rem);
+  gap: clamp(0.75rem, 2.5vw, 2rem);
   margin-bottom: 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 1rem;
@@ -1480,11 +1480,14 @@ button.btn-primary:disabled:hover::after {
   .time-sep {
     font-size: 1.5rem;
   }
+  .hero-timeline {
+    gap: 0.6rem;
+  }
   .timeline-step .step-date {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
   .timeline-step .step-name {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   /* Carousel Responsiveness */
