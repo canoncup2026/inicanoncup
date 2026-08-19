@@ -17,7 +17,7 @@ window.addEventListener('load', () => {
 // Atur true untuk mengaktifkan tombol pendaftaran, atau false untuk mematikannya (abu-abu/disabled).
 const registrationConfig = {
   tooltipEarlyBird: "Pendaftaran Early Bird Telah Ditutup",
-  tooltipReguler: "Pendaftaran Reguler Belum Dibuka",
+  tooltipClosed: "Pendaftaran Telah Ditutup",
   internal: { earlyBird: false, reguler: true, regulerLink: "https://canoncup26.zite.so/beginner" },
   instansi: { earlyBird: false, reguler: true, regulerLink: "https://canoncup26.zite.so/mahasiswa" },
   umum:     { earlyBird: false, reguler: true, regulerLink: "https://canoncup26.zite.so/perguruan-tinggi" }
@@ -26,6 +26,8 @@ const registrationConfig = {
 // === LOGIKA TOMBOL PENDAFTARAN ===
 document.addEventListener('DOMContentLoaded', () => {
   const cardActions = document.querySelectorAll('.card-actions');
+  const lastChanceClose = new Date('2026-08-20T12:00:00+07:00').getTime();
+  const isRegistrationOpen = new Date().getTime() <= lastChanceClose;
   
   cardActions.forEach(actionDiv => {
     const category = actionDiv.getAttribute('data-category');
@@ -56,13 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (config.regulerLink) {
         btnReg.onclick = () => window.open(config.regulerLink, '_blank');
       }
-      if (config.reguler) {
+      if (config.reguler && isRegistrationOpen) {
         btnReg.removeAttribute('disabled');
         btnReg.removeAttribute('data-tooltip');
         btnReg.textContent = btnReg.textContent.replace('🔒 ', '');
       } else {
         btnReg.setAttribute('disabled', 'true');
-        btnReg.setAttribute('data-tooltip', registrationConfig.tooltipReguler);
+        btnReg.setAttribute('data-tooltip', registrationConfig.tooltipClosed);
         if (!btnReg.textContent.includes('🔒')) {
           btnReg.textContent = '🔒 ' + btnReg.textContent.trim();
         }
@@ -86,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const earlyBirdClose = new Date('2026-07-17T23:59:59+07:00').getTime();
   const regulerClose = new Date('2026-08-14T23:59:59+07:00').getTime();
   const extendClose = new Date('2026-08-17T23:59:59+07:00').getTime();
-  const lastChanceClose = new Date('2026-08-19T23:59:59+07:00').getTime();
+  const lastChanceClose = new Date('2026-08-20T12:00:00+07:00').getTime();
 
   function updateCountdown() {
     const now = new Date().getTime();
