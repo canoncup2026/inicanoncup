@@ -18,9 +18,9 @@ window.addEventListener('load', () => {
 const registrationConfig = {
   tooltipEarlyBird: "Pendaftaran Early Bird Telah Ditutup",
   tooltipClosed: "Pendaftaran Telah Ditutup",
-  internal: { earlyBird: false, reguler: true, regulerLink: "https://canoncup26.zite.so/beginner" },
-  instansi: { earlyBird: false, reguler: true, regulerLink: "https://canoncup26.zite.so/mahasiswa" },
-  umum:     { earlyBird: false, reguler: true, regulerLink: "https://canoncup26.zite.so/perguruan-tinggi" }
+  internal: { earlyBird: false, reguler: false, regulerLink: "https://canoncup26.zite.so/beginner" },
+  instansi: { earlyBird: false, reguler: false, regulerLink: "https://canoncup26.zite.so/mahasiswa" },
+  umum:     { earlyBird: false, reguler: false, regulerLink: "https://canoncup26.zite.so/perguruan-tinggi" }
 };
 
 // === LOGIKA TOMBOL PENDAFTARAN ===
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cdLabel.textContent = "SISA WAKTU LAST CHANCE";
     } else {
       targetDate = now; // 0 hitung mundur
-      cdLabel.textContent = "Pendaftaran Ditutup";
+      cdLabel.textContent = "Pendaftaran Telah Ditutup";
     }
     
     let distance = targetDate - now;
@@ -146,7 +146,7 @@ window.addEventListener('scroll', () => {
 // === MOBILE MENU TOGGLE ===
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
+const navLinks = document.querySelectorAll('.nav-link, .btn-cta');
 const dropdowns = document.querySelectorAll('.dropdown');
 
 hamburger.addEventListener('click', () => {

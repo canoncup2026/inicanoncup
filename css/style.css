@@ -230,6 +230,10 @@ h1, h2, h3, h4, .hero-title, .section-title {
   left: 100%;
 }
 
+.btn-cta::after {
+  display: none !important;
+}
+
 .btn-cta:hover {
   background: transparent;
   border-color: var(--color-highlight);
@@ -246,22 +250,35 @@ h1, h2, h3, h4, .hero-title, .section-title {
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
   background-color: var(--color-primary);
   min-width: 180px;
-  border-radius: 8px;
+  width: 100%;
+  border-radius: 12px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
   transition: var(--transition);
-  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   padding: 0.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
 }
 
 .dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 .dropdown-menu a {
@@ -1552,21 +1569,42 @@ body.schedule-page {
 }
 
 .hero-schedule .hero-subtitle {
-  font-size: 2rem;
-  font-family: var(--font-heading);
   background: var(--text-light);
   color: var(--color-primary);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.2rem 1.5rem;
-  border-radius: 4px;
+  padding: 0.4rem 1.8rem;
+  border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-schedule .hero-subtitle .day-text {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.hero-schedule .hero-subtitle .day-divider {
+  font-family: var(--font-body);
+  opacity: 0.4;
+  font-size: 1.15rem;
+}
+
+.hero-schedule .hero-subtitle .day-date {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  line-height: 1;
 }
 
 .hero-schedule .hero-subtitle:hover {
   background: var(--color-highlight);
+  color: var(--color-primary);
+  transform: translateY(-2px);
 }
 
 .subtitle-dropdown {
@@ -1576,35 +1614,87 @@ body.schedule-page {
 
 .subtitle-dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%) translateY(10px);
-  background: var(--bg-white);
-  min-width: 150px;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  padding: 0.5rem 0;
+  background: var(--color-primary);
+  min-width: 340px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  padding: 0;
   list-style: none;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
   z-index: 100;
+  overflow: hidden;
 }
 
-.subtitle-dropdown:hover .subtitle-dropdown-menu {
+.subtitle-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.hero-schedule .hero-subtitle svg {
+  transition: transform 0.3s ease;
+}
+
+.subtitle-dropdown.open .hero-subtitle svg,
+.subtitle-dropdown:hover .hero-subtitle svg {
+  transform: rotate(180deg);
+}
+
+.subtitle-dropdown:hover .subtitle-dropdown-menu,
+.subtitle-dropdown.open .subtitle-dropdown-menu {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(5px);
+  transform: translateX(-50%) translateY(0);
 }
 
 .subtitle-dropdown-menu li a {
-  display: block;
-  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--bg-white);
   color: var(--text-dark);
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
   text-decoration: none;
   transition: var(--transition);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.subtitle-dropdown-menu li:first-child a {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.subtitle-dropdown-menu li:last-child a {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.subtitle-dropdown-menu li a .day-text {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  color: inherit;
+}
+
+.subtitle-dropdown-menu li a .day-divider {
+  font-family: var(--font-body);
+  opacity: 0.4;
+  font-size: 1.05rem;
+}
+
+.subtitle-dropdown-menu li a .day-date {
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  font-weight: 500;
 }
 
 .subtitle-dropdown-menu li a:hover {
@@ -1612,15 +1702,140 @@ body.schedule-page {
   color: var(--color-primary);
 }
 
+.subtitle-dropdown-menu li a.active {
+  background: var(--color-primary);
+  color: var(--text-light);
+}
+
+.subtitle-dropdown-menu li a.active:hover {
+  background: var(--color-secondary);
+  color: var(--text-light);
+}
+
 .schedule-page .section {
   padding-top: 1rem;
+}
+
+.category-filter-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.category-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.category-dropdown-btn {
+  background: var(--text-light);
+  color: var(--color-primary);
+  border: 2px solid var(--text-light);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  padding: 0.4rem 1.8rem;
+  border-radius: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.category-dropdown-btn:hover {
+  background: var(--color-highlight);
+  border-color: var(--color-highlight);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.category-dropdown-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.category-dropdown.open .category-dropdown-btn svg,
+.category-dropdown:hover .category-dropdown-btn svg {
+  transform: rotate(180deg);
+}
+
+.category-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--color-primary);
+  min-width: 250px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  padding: 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.category-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.category-dropdown:hover .category-dropdown-menu,
+.category-dropdown.open .category-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.category-dropdown-menu li a {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  background: var(--bg-white);
+  color: var(--text-dark);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  text-decoration: none;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.category-dropdown-menu li:first-child a {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.category-dropdown-menu li:last-child a {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.category-dropdown-menu li a:hover {
+  background: var(--color-highlight);
+  color: var(--color-primary);
+}
+
+.category-dropdown-menu li a.active {
+  background: var(--color-primary);
+  color: var(--text-light);
+}
+
+.category-dropdown-menu li a.active:hover {
+  background: var(--color-secondary);
+  color: var(--text-light);
 }
 
 .court-tabs {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   flex-wrap: wrap;
 }
 
@@ -1644,7 +1859,7 @@ body.schedule-page {
   background: var(--color-highlight);
   color: var(--color-primary);
   border-color: var(--color-highlight);
-  box-shadow: 0 4px 15px rgba(241, 255, 94, 0.3);
+  box-shadow: none;
 }
 
 .match-container {
@@ -1707,6 +1922,26 @@ body.schedule-page {
   text-align: center;
   width: 80%;
   white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+/* Category Color Variants on Match Cards */
+.match-card.cat-beginner .match-date,
+.match-card.cat-beginner .match-time {
+  background-color: var(--color-highlight);
+  color: var(--color-primary);
+}
+
+.match-card.cat-instansi .match-date,
+.match-card.cat-instansi .match-time {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.match-card.cat-pt .match-date,
+.match-card.cat-pt .match-time {
+  background-color: #8e44ad;
+  color: #ffffff;
 }
 
 .match-vs-wrapper {
@@ -1735,6 +1970,23 @@ body.schedule-page {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .category-filter-wrapper {
+    margin-bottom: 1rem;
+  }
+  .category-dropdown-btn {
+    font-size: 1.2rem;
+    padding: 0.35rem 1.4rem;
+  }
+  .category-dropdown-menu {
+    min-width: 200px;
+  }
+  .category-dropdown-menu li a {
+    font-size: 1.15rem;
+    padding: 0.6rem 1.2rem;
+  }
+  .court-tabs {
+    margin-bottom: 1.8rem;
+  }
   .match-team {
     font-size: 1.2rem;
     width: 120px;

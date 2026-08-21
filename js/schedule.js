@@ -13,8 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const scheduleData = matchSchedules[dayParam];
   
   // Update Header
-  document.getElementById('page-subtitle').innerHTML = `${scheduleData.title} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>`;
-  document.title = `Jadwal ${scheduleData.title} | CANON CUP 2026`;
+  document.getElementById('page-subtitle').innerHTML = `
+    <span class="day-text">${scheduleData.title}</span>
+    <span class="day-divider">–</span>
+    <span class="day-date">${scheduleData.date}</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  `;
+  document.title = `Jadwal ${scheduleData.title} - ${scheduleData.date} | CANON CUP 2026`;
 
   // Update navbar links active state
   const navLinks = document.querySelectorAll('.dropdown-menu a');
@@ -24,35 +29,117 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Update Day dropdown active state
+  const dayLinks = document.querySelectorAll('.subtitle-dropdown-menu a');
+  dayLinks.forEach(link => {
+    if (link.getAttribute('href').includes(`day=${dayParam}`)) {
+      link.classList.add('active');
+    }
+  });
+
+  // Setup Day Dropdown click toggle (mobile / click support)
+  const dayDropdown = document.querySelector('.subtitle-dropdown');
+  const daySubtitleBtn = document.getElementById('page-subtitle');
+  if (dayDropdown && daySubtitleBtn) {
+    daySubtitleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dayDropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dayDropdown.contains(e.target)) {
+        dayDropdown.classList.remove('open');
+      }
+    });
+  }
+
   const tabsContainer = document.getElementById('court-tabs');
+  const catDropdown = document.getElementById('category-dropdown');
+  const catDropdownBtn = document.getElementById('cat-dropdown-btn');
+  const selectedCatText = document.getElementById('selected-category-text');
   const matchContainer = document.getElementById('match-container');
   
   // Jika tidak ada properti courts, jangan lakukan apapun (fallback)
   if (!scheduleData.courts) return;
 
   const courtNames = Object.keys(scheduleData.courts);
-  
-  // Render Tabs
+  let currentCourt = courtNames.length > 0 ? courtNames[0] : '';
+  let currentCategoryFilter = 'all';
+
+  // Helper: Deteksi tipe kategori
+  function getCategoryType(match) {
+    const text = ((match.category || '') + ' ' + (match.stage || '') + ' ' + (match.team1 || '') + ' ' + (match.team2 || '')).toLowerCase();
+    if (text.includes('beginner')) return 'beginner';
+    if (text.includes('mahasiswa') || text.includes('kemenkeu') || text.includes('stan')) return 'instansi';
+    if (text.includes('perguruan tinggi') || text.includes('pt') || text.includes('universitas')) return 'pt';
+    return 'other';
+  }
+
+  // Render Court Tabs
   tabsContainer.innerHTML = '';
   courtNames.forEach((courtName, index) => {
     const btn = document.createElement('button');
     btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
     btn.textContent = courtName;
     btn.addEventListener('click', () => {
-      // Hilangkan class active dari semua tombol
+      // Hilangkan class active dari semua tombol lapangan
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      // Tambahkan ke tombol yang diklik
       btn.classList.add('active');
-      // Render matches untuk lapangan ini
-      renderMatches(scheduleData.courts[courtName], scheduleData.date);
+      currentCourt = courtName;
+      applyFilterAndRender();
     });
     tabsContainer.appendChild(btn);
   });
 
-  // Render match untuk lapangan pertama saat load
-  if (courtNames.length > 0) {
-    renderMatches(scheduleData.courts[courtNames[0]], scheduleData.date);
+  // Setup Category Dropdown
+  if (catDropdown) {
+    const catLinks = catDropdown.querySelectorAll('.category-dropdown-menu a');
+    
+    // Toggle on button click (mobile / touch)
+    if (catDropdownBtn) {
+      catDropdownBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        catDropdown.classList.toggle('open');
+      });
+    }
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!catDropdown.contains(e.target)) {
+        catDropdown.classList.remove('open');
+      }
+    });
+
+    catLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        catLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        
+        if (selectedCatText) {
+          selectedCatText.textContent = link.textContent.trim();
+        }
+        currentCategoryFilter = link.getAttribute('data-category');
+        catDropdown.classList.remove('open');
+        applyFilterAndRender();
+      });
+    });
   }
+
+  function applyFilterAndRender() {
+    if (!scheduleData.courts[currentCourt]) return;
+    const allMatches = scheduleData.courts[currentCourt];
+    let filtered = allMatches;
+
+    if (currentCategoryFilter !== 'all') {
+      filtered = allMatches.filter(m => getCategoryType(m) === currentCategoryFilter);
+    }
+
+    renderMatches(filtered, scheduleData.date);
+  }
+
+  // Render match pertama kali saat load
+  applyFilterAndRender();
 
   // Fungsi untuk render daftar pertandingan
   function renderMatches(matches, dateString) {
@@ -88,15 +175,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           }
 
+          const catType = getCategoryType(match);
+          const catClass = catType !== 'other' ? `cat-${catType}` : '';
+
           const matchHTML = `
-            <div class="match-card">
+            <div class="match-card ${catClass}">
               <div class="match-team ${team1Class}">${match.team1}</div>
               <div class="match-center">
-                <div class="match-date">${dateString}</div>
+                <div class="match-date">${match.category || dateString}</div>
                 <div class="match-vs-wrapper">
                   ${middleElement}
                 </div>
-                <div class="match-time">${match.time}</div>
+                <div class="match-time">${match.time}${match.stage ? ` • ${match.stage}` : ''}</div>
               </div>
               <div class="match-team ${team2Class}">${match.team2}</div>
             </div>
@@ -104,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
           matchContainer.innerHTML += matchHTML;
         });
       } else {
-        matchContainer.innerHTML = `<p style="text-align:center; color: var(--color-highlight);">Jadwal belum tersedia.</p>`;
+        matchContainer.innerHTML = `<p style="text-align:center; color: var(--text-light); opacity: 0.85; font-size: 1.1rem; padding: 2.5rem 0;">Tidak ada jadwal pertandingan untuk kategori ini di lapangan ini.</p>`;
       }
       
       // Animasi fade in
