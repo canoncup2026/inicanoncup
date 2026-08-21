@@ -138,6 +138,21 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMatches(filtered, scheduleData.date);
   }
 
+  // Helper: Deteksi apakah nama tim adalah placeholder / menunggu hasil
+  function isPlaceholderTeam(teamName) {
+    if (!teamName) return false;
+    const t = teamName.trim().toLowerCase();
+    return (
+      t.startsWith('winner') ||
+      t.startsWith('loser') ||
+      t.startsWith('juara') ||
+      t.startsWith('menunggu') ||
+      t === 'tba' ||
+      t === '-' ||
+      t === 'tbd'
+    );
+  }
+
   // Render match pertama kali saat load
   applyFilterAndRender();
 
@@ -154,6 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
           let team1Class = "team-left";
           let team2Class = "team-right";
           let middleElement = `<div class="match-vs">VS</div>`;
+
+          if (isPlaceholderTeam(match.team1)) team1Class += " placeholder-team";
+          if (isPlaceholderTeam(match.team2)) team2Class += " placeholder-team";
 
           if (match.score && match.score.trim() !== "") {
             middleElement = `<div class="match-score">${match.score}</div>`;
