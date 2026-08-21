@@ -198,15 +198,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const matchHTML = `
             <div class="match-card ${catClass}">
-              <div class="match-team ${team1Class}">${match.team1}</div>
-              <div class="match-center">
-                <div class="match-date">${match.category || dateString}</div>
-                <div class="match-vs-wrapper">
+              <div class="match-header-strip">
+                <span class="match-category-tag">${match.category || dateString}</span>
+                <span class="match-time-tag">${match.time}${match.stage ? ` • ${match.stage}` : ''}</span>
+              </div>
+              <div class="match-body">
+                <div class="match-team ${team1Class}">${match.team1}</div>
+                <div class="match-center-pill">
                   ${middleElement}
                 </div>
-                <div class="match-time">${match.time}${match.stage ? ` • ${match.stage}` : ''}</div>
+                <div class="match-team ${team2Class}">${match.team2}</div>
               </div>
-              <div class="match-team ${team2Class}">${match.team2}</div>
             </div>
           `;
           matchContainer.innerHTML += matchHTML;
