@@ -166,8 +166,41 @@
     justify-content: center;
   }
 
-  .sponsor-item {
-    width: calc(50% - 1rem);
+  .sponsor-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8rem;
+  }
+
+  .sponsor-group-main {
+    gap: 1.8rem;
+    width: auto;
+  }
+
+  .sponsor-item-main {
+    width: 110px;
+    max-width: 120px;
+  }
+
+  .sponsor-item-main img {
+    max-height: 70px;
+  }
+
+  .sponsor-group-small {
+    gap: 0.7rem;
+    width: auto;
+  }
+
+  .sponsor-item-small {
+    width: 95px;
+    max-width: 105px;
+  }
+
+  .sponsor-item-small img {
+    max-height: 40px;
+    padding: 3px 6px;
   }
   
   .carousel-inner {

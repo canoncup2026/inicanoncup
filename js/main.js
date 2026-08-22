@@ -208,12 +208,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // Populate Sponsors
   const sponsorGrid = document.getElementById('sponsor-grid');
   if (sponsorGrid && typeof sponsorsData !== 'undefined') {
-    sponsorsData.forEach(sponsor => {
-      const div = document.createElement('div');
-      div.className = 'sponsor-item';
-      div.innerHTML = `<img src="${sponsor.logoUrl}" alt="${sponsor.name}">`;
-      sponsorGrid.appendChild(div);
-    });
+    sponsorGrid.innerHTML = '';
+
+    // Main Tier Sponsors (Wells, Katanya PB, Zac Washing)
+    if (sponsorsData.main && Array.isArray(sponsorsData.main)) {
+      const mainGroup = document.createElement('div');
+      mainGroup.className = 'sponsor-group sponsor-group-main';
+      sponsorsData.main.forEach(sponsor => {
+        const div = document.createElement('div');
+        div.className = 'sponsor-item sponsor-item-main';
+        div.innerHTML = `<img src="${sponsor.logoUrl}" alt="${sponsor.name}" title="${sponsor.name}">`;
+        mainGroup.appendChild(div);
+      });
+      sponsorGrid.appendChild(mainGroup);
+    }
+
+    // Small Tier Sponsors (Minuk & Warung Bu Kokom - Stacked)
+    if (sponsorsData.small && Array.isArray(sponsorsData.small)) {
+      const smallGroup = document.createElement('div');
+      smallGroup.className = 'sponsor-group sponsor-group-small';
+      sponsorsData.small.forEach(sponsor => {
+        const div = document.createElement('div');
+        div.className = 'sponsor-item sponsor-item-small';
+        div.innerHTML = `<img src="${sponsor.logoUrl}" alt="${sponsor.name}" title="${sponsor.name}">`;
+        smallGroup.appendChild(div);
+      });
+      sponsorGrid.appendChild(smallGroup);
+    }
   }
 
   // Populate Footer Contact
