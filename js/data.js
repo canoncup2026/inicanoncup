@@ -59,7 +59,7 @@ const matchSchedules = {
         { time: "10:20 - 10:55 WIB", stage: "QF3", category: "Beginner Canon MD", team1: "Dulang", team2: "Fixed Asset", score: "22 - 42" },
         { time: "10:55 - 11:30 WIB", stage: "P1", category: "Mahasiswa & Kemenkeu MS", team1: "Team DarkoDango", team2: "Witarig", score: "40 - 42" },
         { time: "11:30 - 12:05 WIB", stage: "QF1", category: "Mahasiswa & Kemenkeu MS", team1: "Pecinta Sholawat", team2: "KK", score: "42 - 23" },
-        { time: "12:05 - 12:40 WIB", stage: "QF3", category: "Mahasiswa & Kemenkeu MS", team1: "Karremm99", team2: "Witarig", score: "" }
+        { time: "12:05 - 12:40 WIB", stage: "QF3", category: "Mahasiswa & Kemenkeu MS", team1: "Karremm99", team2: "Witarig", score: "27 - 42" }
       ],
       "Lapangan 2": [
         { time: "08:35 - 09:10 WIB", stage: "P2", category: "Beginner Canon MD", team1: "Fixed Asset", team2: "Duo Trio", score: "42 - 33" },
@@ -67,7 +67,7 @@ const matchSchedules = {
         { time: "10:20 - 10:55 WIB", stage: "QF4", category: "Beginner Canon MD", team1: "Dado GG", team2: "Tim HaHa", score: "36 - 42" },
         { time: "10:55 - 11:30 WIB", stage: "P2", category: "Mahasiswa & Kemenkeu MS", team1: "OJETE", team2: "Artito", score: "29 - 42" },
         { time: "11:30 - 12:05 WIB", stage: "QF2", category: "Mahasiswa & Kemenkeu MS", team1: "PLASSMMAAA", team2: "Aku Jago", score: "34 - 42" },
-        { time: "12:05 - 12:40 WIB", stage: "QF4", category: "Mahasiswa & Kemenkeu MS", team1: "ABE 042", team2: "Artito", score: "" }
+        { time: "12:05 - 12:40 WIB", stage: "QF4", category: "Mahasiswa & Kemenkeu MS", team1: "ABE 042", team2: "Artito", score: "42 - 32" }
       ]
     }
   },
@@ -78,13 +78,13 @@ const matchSchedules = {
     courts: {
       "Lapangan 1": [
         { time: "08:30 - 09:10 WIB", stage: "SF1", category: "Beginner Canon MD", team1: "Gatau", team2: "Saripah Badminton", score: "" },
-        { time: "09:10 - 09:50 WIB", stage: "SF1", category: "Mahasiswa & Kemenkeu MS", team1: "Pecinta Sholawat", team2: "Winner QF3", score: "" },
+        { time: "09:10 - 09:50 WIB", stage: "SF1", category: "Mahasiswa & Kemenkeu MS", team1: "Pecinta Sholawat", team2: "Witarig", score: "" },
         { time: "09:50 - 10:30 WIB", stage: "FINAL", category: "Beginner Canon MD", team1: "Winner SF1", team2: "Winner SF2", score: "" },
         { time: "10:30 - 11:10 WIB", stage: "FINAL", category: "Mahasiswa & Kemenkeu MS", team1: "Winner SF1", team2: "Winner SF2", score: "" }
       ],
       "Lapangan 2": [
         { time: "08:30 - 09:10 WIB", stage: "SF2", category: "Beginner Canon MD", team1: "Fixed Asset", team2: "Tim HaHa", score: "" },
-        { time: "09:10 - 09:50 WIB", stage: "SF2", category: "Mahasiswa & Kemenkeu MS", team1: "Aku Jago", team2: "Winner QF4", score: "" },
+        { time: "09:10 - 09:50 WIB", stage: "SF2", category: "Mahasiswa & Kemenkeu MS", team1: "Aku Jago", team2: "ABE 042", score: "" },
         { time: "09:50 - 10:30 WIB", stage: "JUARA 3", category: "Beginner Canon MD", team1: "Loser SF1", team2: "Loser SF2", score: "" },
         { time: "10:30 - 11:10 WIB", stage: "JUARA 3", category: "Mahasiswa & Kemenkeu MS", team1: "Loser SF1", team2: "Loser SF2", score: "" }
       ]
