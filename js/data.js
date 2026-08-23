@@ -77,16 +77,16 @@ const matchSchedules = {
     session: "07.30 - 13.00 WIB",
     courts: {
       "Lapangan 1": [
-        { time: "08:30 - 09:10 WIB", stage: "SF1", category: "Beginner Canon MD", team1: "Gatau", team2: "Saripah Badminton", score: "" },
-        { time: "09:10 - 09:50 WIB", stage: "SF1", category: "Mahasiswa & Kemenkeu MS", team1: "Pecinta Sholawat", team2: "Witarig", score: "" },
-        { time: "09:50 - 10:30 WIB", stage: "FINAL", category: "Beginner Canon MD", team1: "Winner SF1", team2: "Winner SF2", score: "" },
-        { time: "10:30 - 11:10 WIB", stage: "FINAL", category: "Mahasiswa & Kemenkeu MS", team1: "Winner SF1", team2: "Winner SF2", score: "" }
+        { time: "08:30 - 09:10 WIB", stage: "SF1", category: "Beginner Canon MD", team1: "Gatau", team2: "Saripah Badminton", score: "0 - 2" },
+        { time: "09:10 - 09:50 WIB", stage: "SF1", category: "Mahasiswa & Kemenkeu MS", team1: "Pecinta Sholawat", team2: "Witarig", score: "2 - 1" },
+        { time: "09:50 - 10:30 WIB", stage: "FINAL", category: "Beginner Canon MD", team1: "Saripah Badminton", team2: "Tim HaHa", score: "1 - 2" },
+        { time: "10:30 - 11:10 WIB", stage: "FINAL", category: "Mahasiswa & Kemenkeu MS", team1: "Aku Jago", team2: "Pecinta Sholawat", score: "0 - 2" }
       ],
       "Lapangan 2": [
-        { time: "08:30 - 09:10 WIB", stage: "SF2", category: "Beginner Canon MD", team1: "Fixed Asset", team2: "Tim HaHa", score: "" },
-        { time: "09:10 - 09:50 WIB", stage: "SF2", category: "Mahasiswa & Kemenkeu MS", team1: "Aku Jago", team2: "ABE 042", score: "" },
-        { time: "09:50 - 10:30 WIB", stage: "JUARA 3", category: "Beginner Canon MD", team1: "Loser SF1", team2: "Loser SF2", score: "" },
-        { time: "10:30 - 11:10 WIB", stage: "JUARA 3", category: "Mahasiswa & Kemenkeu MS", team1: "Loser SF1", team2: "Loser SF2", score: "" }
+        { time: "08:30 - 09:10 WIB", stage: "SF2", category: "Beginner Canon MD", team1: "Fixed Asset", team2: "Tim HaHa", score: "0 - 2" },
+        { time: "09:10 - 09:50 WIB", stage: "SF2", category: "Mahasiswa & Kemenkeu MS", team1: "Aku Jago", team2: "ABE 042", score: "2 - 0" },
+        { time: "09:50 - 10:30 WIB", stage: "JUARA 3", category: "Beginner Canon MD", team1: "Fixed Asset", team2: "Gatau", score: "1 - 2" },
+        { time: "10:30 - 11:10 WIB", stage: "JUARA 3", category: "Mahasiswa & Kemenkeu MS", team1: "Witarig", team2: "ABE 042", score: "" }
       ]
     }
   },
