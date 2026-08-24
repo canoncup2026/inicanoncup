@@ -19,15 +19,15 @@ const registrationConfig = {
   tooltipEarlyBird: "Pendaftaran Early Bird Telah Ditutup",
   tooltipClosed: "Pendaftaran Telah Ditutup",
   internal: { earlyBird: false, reguler: false, regulerLink: "https://canoncup26.zite.so/beginner" },
-  instansi: { earlyBird: false, reguler: false, regulerLink: "https://canoncup26.zite.so/mahasiswa" },
-  umum:     { earlyBird: false, reguler: false, regulerLink: "https://canoncup26.zite.so/perguruan-tinggi" }
+  instansi: { earlyBird: false, reguler: true,  regulerLink: "https://canoncup26.zite.so/mahasiswa" },
+  umum:     { earlyBird: false, reguler: true,  regulerLink: "https://canoncup26.zite.so/perguruan-tinggi" }
 };
 
 // === LOGIKA TOMBOL PENDAFTARAN ===
 document.addEventListener('DOMContentLoaded', () => {
   const cardActions = document.querySelectorAll('.card-actions');
-  const lastChanceClose = new Date('2026-08-20T12:00:00+07:00').getTime();
-  const isRegistrationOpen = new Date().getTime() <= lastChanceClose;
+  const registrationCloseDate = new Date('2026-08-25T23:59:59+07:00').getTime();
+  const isRegistrationOpen = new Date().getTime() <= registrationCloseDate;
   
   cardActions.forEach(actionDiv => {
     const category = actionDiv.getAttribute('data-category');
@@ -83,32 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (!cdDays) return;
 
-  // Tanggal Milestones
-  const earlyBirdOpen = new Date('2026-07-13T00:00:00+07:00').getTime();
-  const earlyBirdClose = new Date('2026-07-17T23:59:59+07:00').getTime();
-  const regulerClose = new Date('2026-08-14T23:59:59+07:00').getTime();
-  const extendClose = new Date('2026-08-17T23:59:59+07:00').getTime();
-  const lastChanceClose = new Date('2026-08-20T12:00:00+07:00').getTime();
+  // Batas Waktu Pendaftaran Reguler Mahasiswa & PT: 25 Agustus 2026 pukul 23:59:59 WIB
+  const registrationClose = new Date('2026-08-25T23:59:59+07:00').getTime();
 
   function updateCountdown() {
     const now = new Date().getTime();
-    let targetDate = 0;
+    let targetDate = registrationClose;
     
-    if (now < earlyBirdOpen) {
-      targetDate = earlyBirdOpen;
-      cdLabel.textContent = "Menuju Early Bird";
-    } else if (now < earlyBirdClose) {
-      targetDate = earlyBirdClose;
-      cdLabel.textContent = "Sisa Waktu Early Bird";
-    } else if (now < regulerClose) {
-      targetDate = regulerClose;
-      cdLabel.textContent = "Sisa Waktu Reguler";
-    } else if (now < extendClose) {
-      targetDate = extendClose;
-      cdLabel.textContent = "SISA WAKTU EXTEND";
-    } else if (now < lastChanceClose) {
-      targetDate = lastChanceClose;
-      cdLabel.textContent = "SISA WAKTU LAST CHANCE";
+    if (now < registrationClose) {
+      cdLabel.textContent = "Sisa Waktu Pendaftaran";
     } else {
       targetDate = now; // 0 hitung mundur
       cdLabel.textContent = "Pendaftaran Telah Ditutup";
