@@ -26,7 +26,7 @@ const registrationConfig = {
 // === LOGIKA TOMBOL PENDAFTARAN ===
 document.addEventListener('DOMContentLoaded', () => {
   const cardActions = document.querySelectorAll('.card-actions');
-  const registrationCloseDate = new Date('2026-08-25T23:59:59+07:00').getTime();
+  const registrationCloseDate = new Date('2026-08-26T21:00:00+07:00').getTime();
   const isRegistrationOpen = new Date().getTime() <= registrationCloseDate;
   
   cardActions.forEach(actionDiv => {
@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (!cdDays) return;
 
-  // Batas Waktu Pendaftaran Reguler Mahasiswa & PT: 25 Agustus 2026 pukul 23:59:59 WIB
-  const registrationClose = new Date('2026-08-25T23:59:59+07:00').getTime();
+  // Batas Waktu Pendaftaran Reguler Mahasiswa & PT: 26 Agustus 2026 pukul 21:00:00 WIB
+  const registrationClose = new Date('2026-08-26T21:00:00+07:00').getTime();
 
   function updateCountdown() {
     const now = new Date().getTime();
