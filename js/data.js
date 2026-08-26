@@ -7,9 +7,10 @@ const calendarEvents = [
   { startDate: "2026-07-18", endDate: "2026-08-14", title: "Opreg Reguler", color: "var(--color-highlight)", textColor: "var(--color-primary)" },
   { startDate: "2026-08-15", endDate: "2026-08-17", title: "Opreg Extended", color: "#e74c3c", textColor: "#ffffff" },
   { startDate: "2026-08-18", endDate: "2026-08-20", title: "Last Chance Extend (s.d 12.00 WIB)", color: "#d63031", textColor: "#ffffff" },
-  { date: "2026-08-20", title: "Technical Meeting", color: "#8e44ad" },
+  { date: "2026-08-20", title: "Technical Meeting 1", color: "#8e44ad" },
   { date: "2026-08-22", title: "Day 1" },
   { date: "2026-08-23", title: "Day 2" },
+  { date: "2026-08-26", title: "Technical Meeting 2", color: "#8e44ad" },
   { date: "2026-08-28", title: "Day 3" },
   { date: "2026-08-29", title: "Day 4" },
   { date: "2026-08-30", title: "Day 5" }
